@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.exam.mapper.UserMapper">
+    <select id="selectUserByName" parameterType="User" resultType="User">
+        SELECT * FROM inserted WHERE t_name=#{t_id} and l_name=#{l_id} and subject=#{subject}
+    </select>
+    <select id="selectListened" parameterType="String" resultType="String">
+        SELECT * FROM listened WHERE l_name=#{l_name}
+    </select>
+    <select id="selectTeacher" parameterType="String" resultType="String">
+        SELECT * FROM teacher WHERE t_name = #{t_name}
+    </select>
+    <insert id="insertByName" parameterType="User">
+        INSERT INTO inserted(t_name,l_name,ctime,subject) VALUES(#{t_id},#{l_id},#{ctime},#{subject})
+    </insert>
+    <update id="updateTime" parameterType="User">
+        update inserted set ctime = #{ctime} where t_name=#{t_id} and l_name=#{l_id} and subject=#{subject}
+    </update>
+    <select id="selectFirst" parameterType="String" resultType="Subject">
+        select * from subjectall where f_name = #{subject}
+    </select>
+    <select id="selectAll" resultType="Subject">
+        select * from  subjectall
+    </select>
+    <insert id="insertClasses" parameterType="Classes">
+        insert into combine(score,indexs,area,ctime,T_id,L_id,selectsongdong,firstSubject,secondSubject,valued)
+        values (#{score},#{indexs},#{area},#{ctime},#{T_id},#{L_id},#{selectsongdong},#{firstSubject},#{secondSubject},#{valued})
+    </insert>
+    <select id="selectClasses" parameterType="Sort" resultType="Classes">
+        select * from combine where T_id=#{t_id} and L_id= #{l_id} and firstSubject=#{subject} order by valued desc
+    </select>
+    <update id="updateClasses" parameterType="Classes">
+        update combine set ctime =#{ctime},indexs= #{indexs},score= #{score},selectsongdong=#{selectsongdong} where T_id=#{T_id} and L_id= #{L_id} and area =#{area}
+    </update>
+    <select id="selectString" parameterType="Classes" resultType="Subject">
+        select * from subjectall where th_name=#{area}
+    </select>
+    <select id="selectClassesAll" parameterType="Classes" resultType="Classes">
+        select * from combine where T_id=#{t_id} and L_id= #{l_id} and area=#{area}
+    </select>
+    <select id="selectClassesData" parameterType="Sort" resultType="String">
+        select score from combine where T_id=#{t_id} and L_id= #{l_id} order by valued desc
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: lxx123456
+  application:
+    name: applet
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    locale: zh_CN
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#服务器端口
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    tomcat:
+      uri-encoding: utf-8
+
+weixin:
+  login:
+    info:
+      # appid
+      appid: wx5ebbb05e012fffba
+      # 秘钥
+      appsecret: cd5a541bfb0471fbadd764e4f8c7aa96
+
+
+
