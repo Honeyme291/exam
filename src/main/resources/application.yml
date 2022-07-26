@@ -29,13 +29,6 @@ server:
     tomcat:
       uri-encoding: utf-8
 
-weixin:
-  login:
-    info:
-      # appid
-      appid: wx5ebbb05e012fffba
-      # 秘钥
-      appsecret: cd5a541bfb0471fbadd764e4f8c7aa96
 
 
 
